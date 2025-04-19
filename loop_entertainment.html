@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loop Entertainment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    header {
+      height: 75vh;
+      position: relative;
+      overflow: hidden;
+    }
+    header img.full-gif {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .header-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #111 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    section {
+      background-color: #111;
+      padding: 5rem 2rem;
+      width: 100%;
+      text-align: center;
+    }
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #c800b5;
+      position: relative;
+      display: inline-block;
+      transition: text-shadow 1s ease-in-out, color 1s ease-in-out;
+    }
+    .section-title.active {
+      color: #fff;
+      text-shadow: 0 0 10px #c800b5, 0 0 20px #c800b5;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: linear-gradient(to right, #fff, #c800b5);
+      transition: width 1s ease-in-out, opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    .section-title.active::after {
+      width: 100%;
+      opacity: 1;
+    }
+    p {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+    footer {
+      background-color: #000;
+      color: #777;
+      padding: 3rem 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    #mini-logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 160px;
+      height: 90px;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease;
+      z-index: 1000;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    #mini-logo.visible {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 10px #c800b5;
+    }
+    #mini-logo.visible:hover {
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+    <img src="https://i.ibb.co/cfF0J5h/Loop-entertainment-animacion.gif" id="mini-logo" alt="Loop Entertainment Mini Logo">
+  </a>
+
+  <header>
+    <div class="header-overlay"></div>
+    <img class="full-gif" src="https://i.ibb.co/cfF0J5h/Loop-entertainment-animacion.gif" alt="Animación Loop Entertainment" />
+  </header>
+
+  <section style="border: 1px solid rgba(200, 0, 181, 0.4); border-radius: 16px; box-shadow: 0 0 12px rgba(200, 0, 181, 0.2); max-width: 1000px; margin: 4rem auto; padding: 5rem 2rem;">
+    <h2 class="section-title">Quiénes somos</h2>
+    <p>En Loop Entertainment creo en el poder de una buena historia jugada...</p>
+    <h2 class="section-title">Proyectos</h2>
+    <p>Próximamente lanzaré mi primer juego...</p>
+    <h2 class="section-title">Nuestra visión</h2>
+    <p>Me apasiona crear experiencias que trascienden el entretenimiento...</p>
+    <h2 class="section-title">Sobre mí</h2>
+    <p>Soy el fundador y único integrante de Loop Entertainment...</p>
+  </section>
+
+  <footer>
+    © 2025 Loop Entertainment. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    const miniLogo = document.getElementById('mini-logo');
+    const titles = document.querySelectorAll('.section-title');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight * 0.6) {
+        miniLogo.classList.add('visible');
+      } else {
+        miniLogo.classList.remove('visible');
+      }
+
+      titles.forEach(title => {
+        const rect = title.getBoundingClientRect();
+        const triggerTop = window.innerHeight * 0.3;
+        const triggerBottom = window.innerHeight * 0.7;
+        const isVisible = rect.top <= triggerBottom && rect.bottom >= triggerTop;
+
+        if (isVisible) {
+          title.classList.add('active');
+        } else {
+          title.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
