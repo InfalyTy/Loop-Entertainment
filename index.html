@@ -9,8 +9,35 @@
       rel="stylesheet"
     />
     <link rel="icon" href="https://i.ibb.co/h1ykzS46/loop-negro.png" type="image/png" />
-    <script src="https://unpkg.com/@popmotion/popmotion/dist/popmotion.global.min.js"></script>
-    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+    <script>
+      function toggleGame(id, btn) {
+        const container = document.getElementById(id);
+        const wrapper = container.closest('.game-wrapper');
+        const isActive = container.dataset.active === "true";
+
+        if (isActive) {
+          wrapper.classList.remove('h-[700px]');
+          wrapper.classList.add('h-[300px]');
+
+          const iframe = container.querySelector('iframe');
+          if (iframe) {
+            iframe.classList.add('animate-fade-out');
+            setTimeout(() => {
+              container.innerHTML = "";
+              container.dataset.active = "false";
+              btn.innerText = "Jugar";
+            }, 400);
+          }
+        } else {
+          wrapper.classList.remove('h-[300px]');
+          wrapper.classList.add('h-[700px]');
+
+          container.innerHTML = `<iframe src="${container.dataset.src}" allowfullscreen width="640" height="380" class="animate-fade-in"></iframe>`;
+          container.dataset.active = "true";
+          btn.innerText = "Tancar";
+        }
+      }
+    </script>
     <style>
       body {
         background-color: #000;
@@ -37,6 +64,26 @@
           transform: translateY(0);
         }
       }
+      .animate-fade-in {
+        animation: fadeIn 0.5s ease forwards;
+        opacity: 0;
+      }
+      .animate-fade-out {
+        animation: fadeOut 0.4s ease forwards;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
     </style>
   </head>
   <body class="min-h-screen flex flex-col items-center p-6">
@@ -51,37 +98,25 @@
     <h1 class="text-4xl font-extrabold mb-8 fade-in tracking-wide uppercase">Loop Entertainment</h1>
 
     <!-- Joc Snow Drift -->
-    <div class="w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl transition transform hover:scale-105 duration-300">
+    <div class="game-wrapper h-[300px] overflow-hidden transition-all duration-500 ease-in-out w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl">
       <img
         src="https://i.ibb.co/3YYXSGVj/Snow-Drift.png"
         alt="Snow Drift Logo"
         class="w-40 mx-auto mb-4"
       />
-      <iframe
-        src="https://itch.io/embed-upload/13736962?color=333333"
-        allowfullscreen
-      >
-        <a href="https://loopentertainment.itch.io/snow-drift">
-          Juga a Snow Drift a itch.io
-        </a>
-      </iframe>
+      <button onclick="toggleGame('snowdrift', this)" class="bg-white text-black px-4 py-2 rounded-xl hover:bg-gray-300 font-semibold transition duration-300">Jugar</button>
+      <div id="snowdrift" data-src="https://itch.io/embed-upload/13747834?color=333333" data-active="false"></div>
     </div>
 
     <!-- Joc CIXKarting -->
-    <div class="w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl transition transform hover:scale-105 duration-300">
+    <div class="game-wrapper h-[300px] overflow-hidden transition-all duration-500 ease-in-out w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl">
       <img
         src="https://i.ibb.co/P3vSQSM/mz-TZ3-L-removebg-preview.png"
         alt="CIXKarting Logo"
         class="w-40 mx-auto mb-4"
       />
-      <iframe
-        src="https://itch.io/embed-upload/12109552?color=333333"
-        allowfullscreen
-      >
-        <a href="https://loopentertainment.itch.io/cixk">
-          Juga a CIXKarting a itch.io
-        </a>
-      </iframe>
+      <button onclick="toggleGame('cixkarting', this)" class="bg-white text-black px-4 py-2 rounded-xl hover:bg-gray-300 font-semibold transition duration-300">Jugar</button>
+      <div id="cixkarting" data-src="https://itch.io/embed-upload/12109552?color=333333" data-active="false"></div>
     </div>
 
     <!-- Peu de pàgina -->
