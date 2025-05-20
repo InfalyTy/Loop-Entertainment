@@ -9,6 +9,8 @@
       rel="stylesheet"
     />
     <link rel="icon" href="https://i.ibb.co/h1ykzS46/loop-negro.png" type="image/png" />
+    <script src="https://unpkg.com/@popmotion/popmotion/dist/popmotion.global.min.js"></script>
+    <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
     <style>
       body {
         background-color: #000;
@@ -21,6 +23,20 @@
         height: 600px;
         margin-top: 2rem;
       }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s ease forwards;
+      }
+      .fade-in:nth-child(2) { animation-delay: 0.3s; }
+      .fade-in:nth-child(3) { animation-delay: 0.6s; }
+      .fade-in:nth-child(4) { animation-delay: 0.9s; }
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
   <body class="min-h-screen flex flex-col items-center p-6">
@@ -28,15 +44,15 @@
     <img
       src="https://i.ibb.co/h1ykzS46/loop-negro.png"
       alt="Loop Entertainment Logo"
-      class="w-48 mb-6"
+      class="w-48 mb-6 fade-in"
     />
 
     <!-- Títol -->
-    <h1 class="text-3xl font-bold mb-8">Loop Entertainment</h1>
+    <h1 class="text-4xl font-extrabold mb-8 fade-in tracking-wide uppercase">Loop Entertainment</h1>
 
     <!-- Joc Snow Drift -->
-    <div class="w-full max-w-4xl text-center mb-12">
-      <h2 class="text-xl font-semibold mb-4">Snow Drift</h2>
+    <div class="w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl transition transform hover:scale-105 duration-300">
+      <h2 class="text-2xl font-semibold mb-4">Snow Drift</h2>
       <iframe
         src="https://itch.io/embed-upload/13736962?color=333333"
         allowfullscreen
@@ -48,8 +64,8 @@
     </div>
 
     <!-- Joc CIXKarting -->
-    <div class="w-full max-w-4xl text-center mb-12">
-      <h2 class="text-xl font-semibold mb-4">CIXKarting</h2>
+    <div class="w-full max-w-4xl text-center mb-12 fade-in bg-gray-900 p-6 rounded-2xl shadow-2xl transition transform hover:scale-105 duration-300">
+      <h2 class="text-2xl font-semibold mb-4">CIXKarting</h2>
       <iframe
         src="https://itch.io/embed-upload/12109552?color=333333"
         allowfullscreen
@@ -61,7 +77,7 @@
     </div>
 
     <!-- Peu de pàgina -->
-    <footer class="mt-20 text-center text-sm opacity-70">
+    <footer class="mt-20 text-center text-sm opacity-50 fade-in">
       © 2025 Loop Entertainment. Tots els drets reservats.
     </footer>
   </body>
