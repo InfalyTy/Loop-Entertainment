@@ -1,175 +1,68 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loop Entertainment</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-    header {
-      height: 75vh;
-      position: relative;
-      overflow: hidden;
-      z-index: 0;
-    }
-    section {
-      background-color: #111;
-      padding: 5rem 2rem;
-      width: 100%;
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .header-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 200px;
-      background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #111 100%);
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    img.full-gif {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: #c800b5;
-      position: relative;
-      display: inline-block;
-      transition: text-shadow 1s ease-in-out, color 1s ease-in-out;
-    }
-    .section-title.active {
-      color: #fff;
-      text-shadow: 0 0 10px #c800b5, 0 0 20px #c800b5;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: linear-gradient(to right, #fff, #c800b5);
-      transition: width 1s ease-in-out, opacity 1s ease-in-out;
-      opacity: 0;
-    }
-    .section-title.active::after {
-      width: 100%;
-      opacity: 1;
-    }
-    @keyframes underline-glow {
-  0% { opacity: 0.6; width: 0%; }
-  50% { opacity: 0.8; width: 80%; }
-  100% { opacity: 1; width: 100%; }
-}
-
-    .mistery-icon {
-      display: inline-block;
-      position: relative;
-      animation: pulse-mistery 1.5s infinite ease-in-out;
-      color: #c800b5;
-      margin-left: 0.5rem;
-    }
-    .invader-hint {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: calc(100% + 30px);
-      transform: translateY(-50%);
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px #c800b5, 0 0 16px #c800b5;
-      animation: float-invader 2s ease-in-out infinite alternate;
-    }
-    .mistery-icon:hover .invader-hint {
-      display: block;
-    }
-    @keyframes float-invader {
-      0% { transform: translateY(-50%) translateX(0); }
-      100% { transform: translateY(-50%) translateX(5px); }
-    }
-    @keyframes pulse-mistery {
-      0%, 100% { transform: scale(1); opacity: 0.6; }
-      50% { transform: scale(1.3); opacity: 1; }
-    }
-</style>
-</head>
-<body>
-  <a href="#" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
-    <img src="https://i.ibb.co/cfF0J5h/Loop-entertainment-animacion.gif" id="mini-logo" alt="Loop Entertainment Mini Logo" style="display: none;">
-  </a>
-
-  <header>
-    <div class="header-overlay"></div>
-    <img class="full-gif" src="https://i.ibb.co/cfF0J5h/Loop-entertainment-animacion.gif" alt="Animación Loop Entertainment" />
-  </header>
-
-  <section style="border: 1px solid rgba(200, 0, 181, 0.4); border-radius: 16px; box-shadow: 0 0 12px rgba(200, 0, 181, 0.2); max-width: 1000px; margin: 4rem auto; padding: 5rem 2rem;">
-    <h2 class="section-title">Quiénes somos</h2>
-    <p>En Loop Entertainment creo en el poder de una buena historia jugada. Es un estudio de videojuegos independiente que combina diseño, narrativa y tecnología para crear experiencias inmersivas, originales y memorables. El objetivo: desarrollar juegos que no solo entretienen, sino que conectan.</p>
-
-    <h2 class="section-title">Proyectos <span class="mistery-icon" title="Proyecto secreto">&#9733;<img src='https://www.teleadhesivo.com/es/img/arc226-jpg/folder/products-listado-merchanthover/pegatinas-coches-motos-space-invaders-marciano-iii.jpg' class='invader-hint' alt='Space Invader' /></span></h2>
-    <p>El siguiente juego está en desarrollo y, por ahora, permanece en secreto. Es un proyecto especial que se desvelará en el momento adecuado para sorprender a nuestra comunidad.</p>
-
-    <h2 class="section-title">Nuestra visión</h2>
-    <p>Me apasiona crear experiencias que trascienden el entretenimiento. En Loop Entertainment, el jugador es el protagonista de un viaje que combina narrativa profunda, mecánicas inteligentes y arte visual único. Diseño cada proyecto para desafiar la imaginación y despertar emociones reales.</p>
-
-    <h2 class="section-title">Sobre mí</h2>
-    <p>Soy el fundador y único integrante de Loop Entertainment. Desde la idea inicial hasta el diseño, desarrollo y narrativa, cada detalle de este proyecto nace de mi pasión por los videojuegos. Aspiro a crear experiencias únicas que conecten emocionalmente con quienes las juegan.</p>
-  </section>
-
-  <footer>
-    © 2025 Loop Entertainment. Todos los derechos reservados.
-  </footer>
-
-  <script>
-    const miniLogo = document.getElementById('mini-logo');
-    const titles = document.querySelectorAll('.section-title');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > window.innerHeight * 0.6) {
-        miniLogo.classList.add('visible');
-      } else {
-        miniLogo.classList.remove('visible');
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loop Entertainment</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="https://i.ibb.co/h1ykzS46/loop-negro.png" type="image/png" />
+    <style>
+      body {
+        background-color: #000;
+        color: #fff;
       }
+      iframe {
+        border: none;
+        width: 100%;
+        max-width: 800px;
+        height: 600px;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col items-center p-6">
+    <!-- Logo -->
+    <img
+      src="https://i.ibb.co/h1ykzS46/loop-negro.png"
+      alt="Loop Entertainment Logo"
+      class="w-48 mb-6"
+    />
 
-      titles.forEach(title => {
-        const rect = title.getBoundingClientRect();
-        const triggerTop = window.innerHeight * 0.3;
-        const triggerBottom = window.innerHeight * 0.7;
-        const isVisible = rect.top <= triggerBottom && rect.bottom >= triggerTop;
+    <!-- Títol -->
+    <h1 class="text-3xl font-bold mb-8">Loop Entertainment</h1>
 
-        if (isVisible) {
-          title.classList.add('active');
-        } else {
-          title.classList.remove('active');
-        }
-      });
-    });
-  </script>
-</body>
+    <!-- Joc Snow Drift -->
+    <div class="w-full max-w-4xl text-center mb-12">
+      <h2 class="text-xl font-semibold mb-4">Snow Drift</h2>
+      <iframe
+        src="https://itch.io/embed-upload/13736962?color=333333"
+        allowfullscreen
+      >
+        <a href="https://loopentertainment.itch.io/snow-drift">
+          Juga a Snow Drift a itch.io
+        </a>
+      </iframe>
+    </div>
+
+    <!-- Joc CIXKarting -->
+    <div class="w-full max-w-4xl text-center mb-12">
+      <h2 class="text-xl font-semibold mb-4">CIXKarting</h2>
+      <iframe
+        src="https://itch.io/embed-upload/12109552?color=333333"
+        allowfullscreen
+      >
+        <a href="https://loopentertainment.itch.io/cixk">
+          Juga a CIXKarting a itch.io
+        </a>
+      </iframe>
+    </div>
+
+    <!-- Peu de pàgina -->
+    <footer class="mt-20 text-center text-sm opacity-70">
+      © 2025 Loop Entertainment. Tots els drets reservats.
+    </footer>
+  </body>
 </html>
