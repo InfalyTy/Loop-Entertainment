@@ -32,7 +32,24 @@
           wrapper.classList.remove('h-[300px]');
           wrapper.classList.add('h-[700px]');
 
-          container.innerHTML = `<iframe src="${container.dataset.src}" allowfullscreen width="640" height="380" class="animate-fade-in"></iframe>`;
+          let embedCode = "";
+          if (id === 'snowdrift') {
+            embedCode = `<div class='relative w-full max-w-[800px]'>
+              <iframe src='https://www.crazygames.com/embed/snow-drift-mtu' style='width: 100%; height: 100%;' frameborder='0' allow='gamepad *;' class='animate-fade-in'></iframe>
+              <div class='absolute -bottom-6 right-0'>
+                <img src='https://cdn-icons-png.flaticon.com/512/32/32195.png' alt='Fletxa' class='w-4 h-4 animate-bounce transform -rotate-90 filter invert' />
+              </div>
+            </div>`;
+          } else {
+            embedCode = `<div class='relative w-full max-w-[800px]'>
+              <iframe src="${container.dataset.src}" allowfullscreen width="640" height="380" class="animate-fade-in"></iframe>
+              <div class='absolute -bottom-6 right-0'>
+                <img src='https://cdn-icons-png.flaticon.com/512/32/32195.png' alt='Fletxa' class='w-4 h-4 animate-bounce transform -rotate-90 filter invert' />
+              </div>
+            </div>`;
+          }
+
+          container.innerHTML = embedCode;
           container.dataset.active = "true";
           btn.innerText = "Tancar";
         }
@@ -48,7 +65,7 @@
         width: 100%;
         max-width: 800px;
         height: 600px;
-        margin: 2rem auto 0 auto; /* margin superior i centrat horitzontalment */
+        margin: 2rem auto 0 auto;
         display: block;
       }
       .fade-in {
@@ -123,7 +140,6 @@
       </button>
       <div
         id="snowdrift"
-        data-src="https://itch.io/embed-upload/13747834?color=333333"
         data-active="false"
         class="w-full flex justify-center"
       ></div>
